@@ -1,0 +1,84 @@
+#!/bin/bash
+
+# Your Config
+repo_url="https://github.com/link-to-repo.git"
+branch_name="main"
+
+
+
+# Functions
+function help() {
+    echo "GITX — Automate Git Tasks with A Single Command"
+    echo ""
+    echo "Usage: gitx <command> [arguments]"
+    echo "Commands:"
+    echo "  init [repo_url] [branch_name] - Initialize the Git repository."
+    echo "  commit <message> - Stage and commit changes."
+    echo "  push <message> [branch_name] - Stage, commit, and push changes."
+    echo "  branch <branch_name> - Create and switch to a new branch."
+    echo "  pull - Fetch and pull changes from the remote repository."
+    echo "  config - Edit the configuration file."
+    echo "Note: <command> is required. [arguments] are optional, defaults to config variables."
+}
+
+function init() {
+    local repo="${1:-$repo_url}"
+    local branch="${2:-$branch_name}"
+    git init
+    git add .
+    git commit -m "first commit"
+    git branch -M $branch
+    git remote add origin $repo
+    git push -u origin $branch
+}
+
+function commit() {
+    git add .
+    git commit -m "$1"
+}
+
+function push() {
+    local branch="${2:-$branch_name}"
+    git add .
+    git commit -m "$1"
+    git push origin $branch
+}
+
+function branch() {
+    git branch $1
+    git checkout $1
+}
+
+function pull() {
+    git fetch
+    git status
+    echo "Sync...."
+    git pull
+    git status
+}
+
+function config() {
+    if [[ $EUID -ne 0 ]]; then
+        echo "gitx config requires root privileges."
+    else
+        sudo nano /usr/local/sbin/gitx
+    fi
+}
+
+# Main script
+if [ $# -eq 0 ]; then
+    help
+else
+    command="$1"
+    shift
+    case "$command" in
+        "init") init "$@" ;;
+        "commit") commit "$@" ;;
+        "push") push "$@" ;;
+        "branch") branch "$@" ;;
+        "pull") pull ;;
+        "config") config ;;
+        *) echo "Invalid command: $command"; help ;;
+    esac
+fi
+
