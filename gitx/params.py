@@ -10,7 +10,7 @@ from command.config import config
 def param(parser, subparsers):
     # init
     init_parser = subparsers.add_parser('init', help='Initialize the Git repository.', description='(-u -r -b -reinit) are (optional), defaults to configuration file')
-    init_parser.add_argument('-u', type=int, help='default user (number, start from 0)', required=False)
+    init_parser.add_argument('-u', type=int, help='default_user (default to 0)', required=False)
     init_parser.add_argument('-r', help='repository name', required=False)
     init_parser.add_argument('-b', help='branch name', required=False)
     init_parser.add_argument('-reinit', action='store_true', help='reinit git', required=False)
@@ -20,7 +20,7 @@ def param(parser, subparsers):
     # push 
     push_parser = subparsers.add_parser('push', help='Stage, commit, and push changes.', description='(-u -r -b) are (optional), defaults to configuration file')
     push_parser.add_argument('-m', help='commit message (required)', required=True)
-    push_parser.add_argument('-u', type=int, help='default user (number, start from 0)', required=False)
+    push_parser.add_argument('-u', type=int, help='default_user (default to 0)', required=False)
     push_parser.add_argument('-r', help='repository name', required=False)
     push_parser.add_argument('-b', help='branch name', required=False)
     # branch
@@ -34,7 +34,7 @@ def param(parser, subparsers):
     config_parser = subparsers.add_parser('config', help='Configure Git scope.', description='(-u) are (optional), defaults to configuration file')
     config_parser.add_argument('-l', action='store_true', help='for --local scope', required=False)
     config_parser.add_argument('-g', action='store_true', help='for --global scope', required=False) 
-    config_parser.add_argument('-u', type=int, help='default user (number, start from 0)', required=False)
+    config_parser.add_argument('-u', type=int, help='default_user (default to 0)', required=False)
 
     args = parser.parse_args()
 

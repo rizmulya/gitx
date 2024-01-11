@@ -58,7 +58,7 @@ usage: gitx push [-h] -m M [-u U] [-r R] [-b B]
 options:
   -h, --help  show this help message and exit
   -m M        commit message (required)
-  -u U        default user (number, start from 0)
+  -u U        default user (default to 0)
   -r R        repository name
   -b B        branch name
 
