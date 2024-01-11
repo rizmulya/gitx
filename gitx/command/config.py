@@ -1,10 +1,10 @@
-from settings import usernames, emails
+from settings import usernames, emails, default_user
 import subprocess
 
 
 def config(args):
     if args.l or args.g:
-        user_index = args.u if args.u is not None else 0
+        user_index = args.u if args.u is not None else default_user
         username = usernames[user_index]
         email = emails[user_index]
         scope = "--global" if args.g else "--local"

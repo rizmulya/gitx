@@ -4,17 +4,17 @@ branch_name = "your_branch_name"
 # You can write more than one GitHub credential (username and auth_token),
 # GitHub credentials are used for initialization purposes.
 usernames = (
+    "username_0",
     "username_1",
-    "username_2",
 )
 auth_tokens = (
+    "token_0",
     "token_1",
-    "token_2",
 )
 # Emails are used for Git config purposes.
 emails = (
+    "email_0_@mail.com",
     "email_1_@mail.com",
-    "email_2_@mail.com",
 )
 # The script uses credentials set in default_user by default.
-default_user = 1
+default_user = 0  # index of usernames, auth_tokens, & emails

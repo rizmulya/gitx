@@ -1,9 +1,9 @@
-from settings import usernames, auth_tokens, repo_name, branch_name
+from settings import usernames, auth_tokens, repo_name, branch_name, default_user
 import subprocess
 
 
 def push(args):
-    user_index = args.u if args.u is not None else 0
+    user_index = args.u if args.u is not None else default_user
     username = usernames[user_index]
     token = auth_tokens[user_index]
 
