@@ -2,7 +2,7 @@
 repo_name = "your_repo_name"
 branch_name = "your_branch_name"
 # You can write more than one GitHub credential (username and auth_token),
-# GitHub credentials are used for initialization purposes.
+# GitHub credentials are used for initialization and pushing purposes.
 usernames = (
     "username_0",
     "username_1",
