@@ -16,6 +16,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 if chmod +x setup/gitx && cp setup/gitx /usr/bin/ && cp gitx/ /usr/share/ -R; then
+    echo "-----------------------------------------"
     echo "Installation completed successfully."
     echo ""
     echo "To set up your configuration file, run:"
