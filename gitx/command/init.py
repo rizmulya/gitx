@@ -14,7 +14,7 @@ def init(args):
     subprocess.run(["rm", "-rf", ".git"]) if args.reinit else None
     subprocess.run(["git", "init"])
     subprocess.run(["git", "add", "."])
-    subprocess.run(["git", "commit", "-m", dateNow()]) if args.reinit else subprocess.run(["git", "commit", "-m", dateNow()])
+    subprocess.run(["git", "commit", "-m", args.m])
     subprocess.run(["git", "branch", "-M", branch])
     subprocess.run(["git", "remote", "add", "origin", f"https://github.com/{username}/{repo}.git"])
     
@@ -22,9 +22,3 @@ def init(args):
     push_command.extend(["-f"]) if args.reinit else None
     
     subprocess.run(push_command)
-
-
-def dateNow():
-    current_time = datetime.now()
-    current_date = current_time.strftime('%y%m%d')
-    return f"V{current_date}"

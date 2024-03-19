@@ -13,4 +13,3 @@ def config(args):
         subprocess.run(["git", "config", scope, "user.email", email])
     else:
         print("error: the following arguments are required: -l or -g")
-        

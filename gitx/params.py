@@ -10,6 +10,7 @@ from command.config import config
 def param(parser, subparsers):
     # init
     init_parser = subparsers.add_parser('init', help='Initialize the Git repository.', description='(-u -r -b -reinit) are (optional), defaults to configuration file')
+    init_parser.add_argument('-m', help='commit message (required)', required=True)
     init_parser.add_argument('-u', type=int, help='default_user (default to 0)', required=False)
     init_parser.add_argument('-r', help='repository name', required=False)
     init_parser.add_argument('-b', help='branch name', required=False)
